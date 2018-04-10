@@ -4,7 +4,9 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y \
 	git \
 	curl \
-	cmake
+	cmake \
+	automake \
+	zip
 
 #Install Cpp environment
 RUN apt-get update && apt-get install -y \	
@@ -16,7 +18,8 @@ RUN apt-get update && apt-get install -y \
 	libgtest-dev \
 	clang libc++-dev \
 	libusb-1.0-0-dev \
-	libudev-dev
+	libudev-dev \
+	libsystemd-dev
 
 #Install grpc
 RUN git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc && cd grpc && git submodule update --init && make && make install && cd third_party/protobuf && make install
